@@ -13,16 +13,23 @@ public class GameFrame extends MyFrame {
 			GameWorld.player.move();
 			movePlayerBullets();
 			moveEnemies();
-			for (int i = 0; i < GameWorld.enemies.size(); i++) {
-				Enemy e = GameWorld.enemies.get(i);
-				if (e.x == GameWorld.player.x && e.y == GameWorld.player.y) {
-					System.out.println("FuckingGame");
-					//12-1
-				}
-
-			}
+			checkPlayerAndEnemies();
+			checkPlayerBulletsAndEnemies();
 			sleep(0.03);
 		}
+	}
+
+	public void checkPlayerAndEnemies() {
+		for (int i = 0; i < GameWorld.enemies.size(); i++) {
+			Enemy e = GameWorld.enemies.get(i);
+			if (Math.abs(e.x - GameWorld.player.x) <= 30 && Math.abs(e.y - GameWorld.player.y) <= 30) {
+				System.out.println("FuckingGame");
+				GameWorld.player.y = -1000;
+				//12-1
+			}
+
+		}
+
 	}
 
 	public void movePlayerBullets() {
@@ -45,6 +52,34 @@ public class GameFrame extends MyFrame {
 			Enemy e = GameWorld.enemies.get(i);
 			e.draw(this);
 			e.move();
+		}
+	}
+
+	public void checkPlayerBulletsAndEnemies() {
+		int i = 0;
+		while (i < GameWorld.playerBullets.size()) {
+			//プレイヤー弾一つ一つについて、変数bに入れて繰り返し実行する
+			PlayerBullet b = GameWorld.playerBullets.get(i);
+			int j = 0;
+			int hits = 0;
+			while (j < GameWorld.enemies.size()) {
+				Enemy e = GameWorld.enemies.get(j);
+				//敵eとプレイヤー弾bが衝突していたら「あたり」と表示
+				if (Math.abs(e.x - b.x) <= 30 && Math.abs(e.y - b.y) <= 30) {
+					System.out.println("あたり");
+					hits++;
+					GameWorld.enemies.remove(j);
+				} else
+					j++;
+			}
+			if (hits > 0) {
+				GameWorld.playerBullets.remove(i);
+
+			} else {
+				i++;
+
+			}
+
 		}
 	}
 
