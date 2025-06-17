@@ -1,0 +1,29 @@
+
+public class CurveEnemy extends Enemy {
+	public CurveEnemy(double x, double y, double vx, double vy) {
+		super(x, y, vx, vy);
+
+	}
+
+	public void move() {
+		super.move();
+		if (x < GameWorld.player.x) {
+			//自分がより左にいたら
+			x++;//右に移動する
+		}
+		if (x > GameWorld.player.x) {
+			//自分がより右にいたら
+			x--;//左に移動する
+
+		}
+	}
+
+	public void draw(MyFrame f) {
+
+		f.setColor(0, 0, 0);
+		f.fillOval(x, y, 30, 30);
+
+		f.setColor(256, 256, 256);
+		f.fillOval(x + 5, y, 20, 30);
+	}
+}

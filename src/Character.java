@@ -20,7 +20,8 @@ public class Character {
 		//drawメソッド
 		//draw:標準では単純な四角形が描かれる
 		f.setColor(0, 128, 0);
-		f.fillRect(x, y, 30, 30);
+		//f.fillRect(x+10, y, 10, 10);
+		f.fillOval(x+10, y, 10, 10);
 		//P186 - リスト10.8
 	}
 }
