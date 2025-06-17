@@ -19,8 +19,8 @@ public class Character {
 	public void draw(MyFrame f) {
 		//drawメソッド
 		//draw:標準では単純な四角形が描かれる
-		f.setColor(0, 0, 0);
-		f.fillRect(x, y, vy, vx);
+		f.setColor(0, 128, 0);
+		f.fillRect(x, y, 30, 30);
 		//P186 - リスト10.8
 	}
 }

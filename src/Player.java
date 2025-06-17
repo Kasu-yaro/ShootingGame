@@ -1,9 +1,49 @@
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class Player extends Character{
+public class Player extends Character implements KeyListener {
 
 	public Player(double x, double y, double vx, double vy) {
+		//characterクラスのコンストラクト呼び出し
 		super(x, y, vx, vy);
 		// TODO 自動生成されたコンストラクター・スタブ
+	}
+
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
+			vx = 5;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
+			vx = -5;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			GameWorld.playerBullets.add(new PlayerBullet(x, y, 0, -10));
+			System.out.println("弾の数=" + GameWorld.playerBullets.size());
+		}
+	}
+
+	public void keyReleased(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
+			vx = 0;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
+			vx = 0;
+		}
+	}
+	//10-7終わり
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+	public void move() {
+		super.move();
+		if (x < 0)
+			x = 0;
+		if (x > 370)
+			x = 370;
 	}
 
 }
