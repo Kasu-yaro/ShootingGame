@@ -2,18 +2,19 @@
 public class CurveEnemy extends Enemy {
 	public CurveEnemy(double x, double y, double vx, double vy) {
 		super(x, y, vx, vy);
-
+		life = 6 * (GameWorld.stage * 3 / 2);
+		score = 60 * (GameWorld.stage * 3 / 2);
 	}
 
 	public void move() {
 		super.move();
 		if (x < GameWorld.player.x) {
 			//自分がより左にいたら
-			x++;//右に移動する
+			x += GameWorld.stage;//右に移動する
 		}
 		if (x > GameWorld.player.x) {
 			//自分がより右にいたら
-			x--;//左に移動する
+			x += GameWorld.stage;//左に移動する
 
 		}
 	}
