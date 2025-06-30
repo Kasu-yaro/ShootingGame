@@ -14,7 +14,7 @@ public class EnemyBase extends Enemy {
 		if (x < 100)
 			vx = GameWorld.stage;
 		if (Math.random() < 0.06 + (GameWorld.stage * 0.01)) {
-			GameWorld.enemies.add(new StraightEnemy(Math.random() * 500, y, 0, 1 + 0.1 * GameWorld.stage));
+			GameWorld.enemies.add(new StraightEnemy(Math.random() * 800, y, 0, 1 + 0.1 * GameWorld.stage));
 		}
 		if (Math.random() < 0.02 + (GameWorld.stage * 0.01)) {
 			GameWorld.enemies.add(new RandomEnemy(x, y, 0, 0.1 * GameWorld.stage));
