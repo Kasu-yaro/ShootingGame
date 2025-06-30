@@ -2,14 +2,14 @@
 public class RandomEnemy extends Enemy {
 	public RandomEnemy(double x, double y, double vx, double vy) {
 		super(x, y, vx, vy);
-		life = 4 * (GameWorld.stage * 3 / 2);
-		score = 20 * (GameWorld.stage * 3 / 2);
+		life = 1 + (GameWorld.stage * 3 / 2);
+		score = 200 * (GameWorld.stage * 3 / 2);
 
 	}
 
 	public void move() {
 		super.move();
-		vx = Math.random() * 4 + (GameWorld.stage * 2) - 2;
+		vx = Math.random() * 4 - 2;
 	}
 
 	public void draw(MyFrame f) {

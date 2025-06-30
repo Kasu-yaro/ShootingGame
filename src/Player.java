@@ -24,9 +24,21 @@ public class Player extends Character implements KeyListener {
 			vx = -5;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-			GameWorld.playerBullets.add(new PlayerBullet(x, y, 0, -10));
-			GameWorld.playerBullets.add(new PlayerBullet(x, y, 3, -10));
-			GameWorld.playerBullets.add(new PlayerBullet(x, y, -3, -10));
+			GameWorld.playerBullets.add(new PlayerBullet(x, y, 0, -20));
+			GameWorld.playerBullets.add(new PlayerBullet(x, y, 3, -30));
+			GameWorld.playerBullets.add(new PlayerBullet(x, y, -3, -30));
+
+			GameWorld.playerBullets.add(new PlayerBullet(x, y, 5, -30));
+			GameWorld.playerBullets.add(new PlayerBullet(x, y, -5, -30));
+
+			GameWorld.playerBullets.add(new PlayerBullet(x, y, 10, -30));
+			GameWorld.playerBullets.add(new PlayerBullet(x, y, -10, -30));
+
+			GameWorld.playerBullets.add(new PlayerBullet(x, y, 15, -30));
+			GameWorld.playerBullets.add(new PlayerBullet(x, y, -15, -30));
+
+			GameWorld.playerBullets.add(new PlayerBullet(x, y, 30, -50));
+			GameWorld.playerBullets.add(new PlayerBullet(x, y, -30, -50));
 
 			System.out.println("弾の数=" + GameWorld.playerBullets.size());
 		}
@@ -54,10 +66,10 @@ public class Player extends Character implements KeyListener {
 
 	public void move() {
 		super.move();
-		if (x < 0)
-			x = 0;
-		if (x > 370)
-			x = 370;
+		if (x < 50)
+			x = 50;
+		if (x > 700)
+			x = 700;
 	}
 
 }
